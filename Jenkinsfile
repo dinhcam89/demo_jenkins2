@@ -14,7 +14,7 @@ pipeline {
 
     stage('Docker Push'){
         steps{
-            docker push dinhcam89/java_helloworld:latest
+            sh 'docker push dinhcam89/java_helloworld:latest'
         }
     }
   }
