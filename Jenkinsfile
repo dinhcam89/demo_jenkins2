@@ -1,20 +1,21 @@
 pipeline {
     agent any
 
-
-    stage('Build Docker Image') {
-      steps {
-        script {
-          docker.withRegistry('https://hub.docker.com/repository/docker/dinhcam89/java_helloworld/') {
-            def image = docker.build('java_helloworld')
-          }
+    stages{
+        stage('Build Docker Image') {
+        steps {
+            script {
+            docker.withRegistry('https://hub.docker.com/repository/docker/dinhcam89/java_helloworld/') {
+                def image = docker.build('java_helloworld')
+            }
+            }
         }
-      }
-    }
+        }
 
-    stage('Docker Push'){
-        steps{
-            sh 'docker push dinhcam89/java_helloworld:latest'
+        stage('Docker Push'){
+            steps{
+                sh 'docker push dinhcam89/java_helloworld:latest'
+            }
         }
     }
   }
