@@ -1,29 +1,30 @@
 pipeline {
     agent any
 
-    stages {
-        stage('Checkout') {
-            steps {
-                echo 'Checking out...'
-            }
-        }
 
-        stage('Build') {
-            steps {
-                echo 'Building...'
-            }
+    stage('Build Docker Image') {
+      steps {
+        script {
+          docker.withRegistry('https://hub.docker.com/repository/docker/dinhcam89/java_helloworld/') {
+            def image = docker.build('java_helloworld')
+          }
         }
+      }
+    }
 
-        stage('Test') {
-            steps {
-                echo 'Testing unit 2...'
-            }
-        }
-
-        stage('Publish') {
-            steps {
-                echo 'Publising...'
-            }
+    stage('Docker Push'){
+        steps{
+            docker push dinhcam89/java_helloworld:latest
         }
     }
+  }
+
+  post {
+    success {
+      echo 'Pipeline completed successfully'
+    }
+    failure {
+      echo 'Pipeline failed'
+    }
+  }
 }
