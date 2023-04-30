@@ -8,19 +8,25 @@ pipeline{
 
 	stages {
 
-		stage('Build') {
-
-			steps {
-				sh 'docker build -t java_helloworld:latest .'
-			}
+		withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/') {
+    // some block
+			sh 'docker build -t java_helloworld:latest .'
+			sh 'docker tag java_helloworld dinhcam89/java_helloworld'
+			sh 'docker push dinhcam89/java_helloworld'
 		}
+		// stage('Build') {
 
-		stage('Login') {
+		// 	steps {
+		// 		sh 'docker build -t java_helloworld:latest .'
+		// 	}
+		// }
 
-			steps {
-				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u dockerhub --password-stdin'
-			}
-		}
+		// stage('Login') {
+
+		// 	steps {
+		// 		sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u dockerhub --password-stdin'
+		// 	}
+		// }
 		
 		
 		// stage('View Images') {
@@ -30,19 +36,19 @@ pipeline{
 		// 	}
 		// }
 		
-		stage('Docker Tag') {
+		// stage('Docker Tag') {
 
-			steps {
-				sh 'docker tag java_helloworld dinhcam89/java_helloworld'
-			}
-		}
+		// 	steps {
+		// 		sh 'docker tag java_helloworld dinhcam89/java_helloworld'
+		// 	}
+		// }
 
-		stage('Push') {
+		// stage('Push') {
 
-			steps {
-				sh 'docker push dinhcam89/java_helloworld'
-			}
-		}
+		// 	steps {
+		// 		sh 'docker push dinhcam89/java_helloworld'
+		// 	}
+		// }
 		
 
 	}
