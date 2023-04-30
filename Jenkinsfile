@@ -33,7 +33,7 @@ pipeline{
 		stage('Docker Tag') {
 
 			steps {
-				sh 'docker tag demo1:latest '
+				sh 'docker tag java_helloworld dinhcam89/java_helloworld'
 			}
 		}
 
