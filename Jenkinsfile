@@ -11,7 +11,7 @@ pipeline{
 		stage('Build') {
 
 			steps {
-				sh 'docker build -t advanced-network-jenkins:latest .'
+				sh 'docker build -t demo1:latest .'
 			}
 		}
 
@@ -23,17 +23,17 @@ pipeline{
 		}
 		
 		
-		stage('View Images') {
+		// stage('View Images') {
 
-			steps {
-				sh 'docker images'
-			}
-		}
+		// 	steps {
+		// 		sh 'docker images'
+		// 	}
+		// }
 		
 		stage('Docker Tag') {
 
 			steps {
-				sh 'docker tag advanced-network-jenkins ddinhcam89/java_helloworld'
+				sh 'docker tag demo1:latest ddinhcam89/java_helloworld/demo1:latest'
 			}
 		}
 
