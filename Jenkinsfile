@@ -18,7 +18,11 @@ pipeline{
 		stage('Login') {
 
 			steps {
-				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+				withDockerRegistry(credentialsId: 'dockerhub2', url: 'https://index.docker.io/v1/') {
+					// some block
+					sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+				}
+				//sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
 			}
 		}
 		
@@ -39,8 +43,8 @@ pipeline{
 
 		stage('Push') {
 
-			steps {
-				sh 'docker push dinhcam89/java_helloworld'
+			withDockerRegistry(credentialsId: 'dockerhub2', url: 'docker push dinhcam89/java_helloworld') {
+    		// some block
 			}
 		}
 		
