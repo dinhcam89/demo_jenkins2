@@ -18,7 +18,7 @@ pipeline{
 		stage('Login') {
 
 			steps {
-				withDockerRegistry(credentialsId: 'dockerhub2', url: 'https://index.docker.io/v1/') {
+				withDockerRegistry(credentialsId: 'dockerhub2', url: 'https://index.docker.io/v2/') {
 					// some block
 					sh 'docker build -t java_helloworld:latest .'
 					sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
