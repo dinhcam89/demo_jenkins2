@@ -42,8 +42,8 @@ pipeline{
 
 			//withDockerRegistry(credentialsId: 'dockerhub2', url: 'docker push dinhcam89/java_helloworld') {
     		// some block
-
-			sh 'docker push dinhcam89/java_helloworld'
+			steps{
+				sh 'docker push dinhcam89/java_helloworld'
 			}
 		}
 		
