@@ -3,7 +3,7 @@ pipeline{
 	agent any
 
 	environment {
-		DOCKERHUB_CREDENTIALS=credentials('dockerhub')
+		DOCKERHUB_CREDENTIALS=credentials('docker')
 	}
 
 	stages {
@@ -43,7 +43,7 @@ pipeline{
     		// some block
 			steps{
 
-				withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/') {
+				withDockerRegistry(credentialsId: 'docker', url: 'https://index.docker.io/v1/') {
 					// some block
 					sh 'docker push dinhcam89/java_helloworld'
 
