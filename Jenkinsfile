@@ -40,12 +40,13 @@ pipeline{
 
 		stage('Push') {
 
-			withDockerRegistry(credentialsId: 'dockerhub', url: 'docker push dinhcam89/java_helloworld') {
     		// some block
 			steps{
+				withDockerRegistry(credentialsId: 'dockerhub', url: 'docker push dinhcam89/java_helloworld') {
 				sh 'docker push dinhcam89/java_helloworld'
+				}
 			}
-		}
+		
 		}
 
 	
