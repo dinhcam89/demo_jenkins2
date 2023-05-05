@@ -2,6 +2,9 @@ pipeline{
 
 	agent any
 
+	environment {
+		DOCKERHUB_CREDENTIALS=credentials('dockerhub')
+	}
 
 	stages {
 
@@ -12,20 +15,39 @@ pipeline{
 			}
 		}
 
-		
-	
-		stage('Docker Push') {
+		stage('Login') {
 
 			steps {
-				// This step should not normally be used in your script. Consult the inline help for details.
-				withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/)') {
-					// some block
-					sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u dockerhub --password-stdin'
-					sh 'docker build -t java_helloworld:latest .'
-					sh 'docker push dinhcam89/java_helloworld'
+				
+				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u dockerhub --password-stdin'			
 				}
+		}
+		
+		
+		// stage('View Images') {
+
+		// 	steps {
+		// 		sh 'docker images'
+		// 	}
+		// }
+		
+		stage('Docker Tag') {
+
+			steps {
+				sh 'docker tag java_helloworld dinhcam89/java_helloworld'
 			}
 		}
+
+		stage('Push') {
+
+    		// some block
+			steps{		
+				sh 'docker push dinhcam89/java_helloworld'					
+			}
+		
+		}
+
+	
 	}
 
 	post {
