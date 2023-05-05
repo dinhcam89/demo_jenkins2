@@ -46,8 +46,9 @@ pipeline{
 				sh 'docker push dinhcam89/java_helloworld'
 			}
 		}
-		
+		}
 
+	
 	}
 
 	// post {
