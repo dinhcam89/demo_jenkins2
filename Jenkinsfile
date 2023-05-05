@@ -15,13 +15,13 @@ pipeline{
 			}
 		}
 
-		stage('Login') {
+		// stage('Login') {
 
-			steps {
+		// 	steps {
 				
-				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-			}
-		}
+		// 		sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+		// 	}
+		// }
 		
 		
 		// stage('View Images') {
@@ -40,7 +40,7 @@ pipeline{
 
 		stage('Push') {
 
-			//withDockerRegistry(credentialsId: 'dockerhub2', url: 'docker push dinhcam89/java_helloworld') {
+			withDockerRegistry(credentialsId: 'dockerhub', url: 'docker push dinhcam89/java_helloworld') {
     		// some block
 			steps{
 				sh 'docker push dinhcam89/java_helloworld'
