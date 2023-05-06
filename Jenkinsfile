@@ -3,7 +3,7 @@ pipeline{
 	agent any
 
 	environment {
-		DOCKERHB_CREDENTIALS=credentials('dockerhub')
+		DOCKERHB_CREDENTIALS = redentials('jenkins')
 	}
 
 	stages {
