@@ -3,7 +3,7 @@ pipeline{
 	agent any
 
 	environment {
-		DOCKERHB_CREDENTIALS = credentials('jenkins')
+		DOCKERHB_CREDENTIALS = credentials('docker_hub')
 	}
 
 	stages {
@@ -24,7 +24,7 @@ pipeline{
 		stage('Login') {
 
 			steps {
-				sh 'echo "$DOCKERHUB_CREDENTIALS_PSW"'
+				//sh 'echo "$DOCKERHUB_CREDENTIALS_PSW"'
 				sh 'echo $DOCKERHB_CREDENTIALS_PSW |echo $DOCKERHB_CREDENTIALS_USR | docker login -u $DOCKERHB_CREDENTIALS_USR -p $DOCKERHB_CREDENTIALS_PSW'	
 				}
 		}
