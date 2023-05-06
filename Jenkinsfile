@@ -3,7 +3,7 @@ pipeline{
 	agent any
 
 	environment {
-		DOCKERHB_CREDENTIALS = redentials('jenkins')
+		DOCKERHB_CREDENTIALS = credentials('jenkins')
 	}
 
 	stages {
