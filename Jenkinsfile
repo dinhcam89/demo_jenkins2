@@ -15,11 +15,11 @@ pipeline{
 			}
 		}
 
-		// stage('Check Docker') {
-		// 	steps {
-		// 		sh 'docker info'
-		// 	}
-		// }
+		stage('Check Docker') {
+			steps {
+				sh 'docker info'
+			}
+		}
 
 		stage('Login') {
 
