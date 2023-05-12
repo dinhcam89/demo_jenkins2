@@ -63,7 +63,7 @@ pipeline{
 		}
 
 		success{
-			mail bcc: '', body: 'Build Succeed', cc: 'dinhcam1512@gmail.com', from: '', replyTo: '', subject: 'Build Action', to: 'dinhcam1512@gmail.com'
+			emailext body: 'build', subject: 'build', to: 'dinhcam1512@gmail.com'
 		}
 
 		failure{
