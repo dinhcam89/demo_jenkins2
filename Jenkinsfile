@@ -62,11 +62,12 @@ pipeline{
 		}
 
 		success{
-			emailext body: 'build', subject: 'build', to: 'dinhcam1512@gmail.com'		}
+			emailext attachlog: true, body: 'build', subject: 'build', to: 'dinhcam1512@gmail.com'		
+			}
 
-		failure{
-			mail bcc: '', body: 'Build Failed', cc: 'dinhcam1512@gmail.com', from: '', replyTo: '', subject: 'Build Action', to: 'dinhcam1512@gmail.com'
-		}
+		// failure{
+		// 	mail bcc: '', body: 'Build Failed', cc: 'dinhcam1512@gmail.com', from: '', replyTo: '', subject: 'Build Action', to: 'dinhcam1512@gmail.com'
+		// }
 	}
 
 }
