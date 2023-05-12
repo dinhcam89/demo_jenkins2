@@ -61,6 +61,14 @@ pipeline{
 		always {
 			sh 'docker logout'
 		}
+
+		success{
+			mail bcc: '', body: 'Build Succeed', cc: 'dinhcam1512@gmail.com', from: '', replyTo: '', subject: 'Build Action', to: 'dinhcam1512@gmail.com'
+		}
+
+		failure{
+			mail bcc: '', body: 'Build Failed', cc: 'dinhcam1512@gmail.com', from: '', replyTo: '', subject: 'Build Action', to: 'dinhcam1512@gmail.com'
+		}
 	}
 
 }
