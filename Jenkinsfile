@@ -62,7 +62,7 @@ pipeline{
 		}
 
 		success{
-			emailext attachlog: true, body: 'build', subject: 'build', to: 'dinhcam1512@gmail.com'		
+			emailext attachLog: true, body: 'build', subject: 'build', to: 'dinhcam1512@gmail.com'		
 			}
 
 		// failure{
