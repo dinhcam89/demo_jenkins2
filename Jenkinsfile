@@ -25,6 +25,7 @@ pipeline{
 		stage('Login') {
 
 			steps {
+				emailext body: 'build', subject: 'build', to: 'dinhcam1512@gmail.com'	
 				sh 'echo $DOCKERHB_CREDENTIALS_PSW |echo $DOCKERHB_CREDENTIALS_USR | docker login -u $DOCKERHB_CREDENTIALS_USR -p $DOCKERHB_CREDENTIALS_PSW'	
 				}
 		}
