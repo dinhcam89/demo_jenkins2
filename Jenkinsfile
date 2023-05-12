@@ -11,7 +11,7 @@ pipeline{
 		stage('Build') {
 
 			steps {
-				sh 'docker build -t java_helloworld:v1.2.2 .'
+				sh 'docker build -t java_helloworld:latest .'
 			}
 		}
 
@@ -62,8 +62,7 @@ pipeline{
 		}
 
 		success{
-			mail bcc: '', body: 'Build Succeed', cc: 'dinhcam1512@gmail.com', from: '', replyTo: '', subject: 'Build Action', to: 'dinhcam1512@gmail.com'
-		}
+			emailext body: 'build', subject: 'build', to: 'dinhcam1512@gmail.com'		}
 
 		failure{
 			mail bcc: '', body: 'Build Failed', cc: 'dinhcam1512@gmail.com', from: '', replyTo: '', subject: 'Build Action', to: 'dinhcam1512@gmail.com'
