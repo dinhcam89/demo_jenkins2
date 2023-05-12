@@ -11,7 +11,7 @@ pipeline{
 		stage('Build') {
 
 			steps {
-				sh 'docker build -t java_helloworld:latest .'
+				sh 'docker build -t java_helloworld:v1.2.2 .'
 			}
 		}
 
@@ -25,7 +25,6 @@ pipeline{
 		stage('Login') {
 
 			steps {
-				//sh 'echo "$DOCKERHUB_CREDENTIALS_PSW"'
 				sh 'echo $DOCKERHB_CREDENTIALS_PSW |echo $DOCKERHB_CREDENTIALS_USR | docker login -u $DOCKERHB_CREDENTIALS_USR -p $DOCKERHB_CREDENTIALS_PSW'	
 				}
 		}
@@ -63,7 +62,7 @@ pipeline{
 		}
 
 		success{
-			mail bcc: '', body: 'Build Succeed', cc: 'dinhcam1512@gmail.com', from: 'Jenkins', replyTo: '', subject: 'Build Action', to: 'dinhcam1512@gmail.com'
+			mail bcc: '', body: 'Build Succeed', cc: 'dinhcam1512@gmail.com', from: '', replyTo: '', subject: 'Build Action', to: 'dinhcam1512@gmail.com'
 		}
 
 		failure{
