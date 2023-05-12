@@ -25,7 +25,7 @@ pipeline{
 		stage('Login') {
 
 			steps {	
-				sh 'echo $DOCKERHB_CREDENTIALS_PSW |echo $DOCKERHB_CREDENTIALS_USR | docker login -u $DOCKERHB_CREDENTIALS_USR -p $DOCKERHB_CREDENTIALS_PSW'	
+				sh 'echo $DOCKERHB_CREDENTIALS_PSW | echo $DOCKERHB_CREDENTIALS_USR | docker login -u 123 -p $DOCKERHB_CREDENTIALS_PSW'	
 				}
 		}
 		
@@ -62,11 +62,11 @@ pipeline{
 		}
 
 		success{
-			emailext attachLog: true, body: 'Build', subject: 'Build Succeed', to: 'dinhcam1512@gmail.com'		
+			emailext attachLog: true, body: 'Build Succeed', subject: 'Build Action', to: 'dinhcam1512@gmail.com'		
 		}
 
 		failure{
-			emailext attachLog: true, body: 'Build', subject: 'Build Failed', to: 'dinhcam1512@gmail.com'		
+			emailext attachLog: true, body: 'Build Failed', subject: 'Build Action', to: 'dinhcam1512@gmail.com'		
 		}
 	}
 
