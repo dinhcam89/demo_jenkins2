@@ -18,6 +18,7 @@ pipeline{
 		stage('Check Docker') {
 			steps {
 				sh 'docker info'
+				sh 'java hello.java'
 			}
 		}
 
