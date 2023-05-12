@@ -62,8 +62,8 @@ pipeline{
 		}
 
 		success{
-			emailext attachLog: true, body: 'build', subject: 'build', to: 'dinhcam1512@gmail.com'		
-			}
+			emailext body: 'build', subject: 'build', to: 'dinhcam1512@gmail.com'		
+		}
 
 		// failure{
 		// 	mail bcc: '', body: 'Build Failed', cc: 'dinhcam1512@gmail.com', from: '', replyTo: '', subject: 'Build Action', to: 'dinhcam1512@gmail.com'
