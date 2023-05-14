@@ -9,7 +9,7 @@ RUN apk update && apk add --no-cache git \
     && git clone https://github.com/dinhcam89/demo_jenkins2.git
 
 # Set the working directory to the directory that contains the Java file
-WORKDIR /app/demo_jenkins
+WORKDIR /app/demo_jenkins2
 
 # Compile the Java file
 RUN javac hello.java
