@@ -15,12 +15,12 @@ pipeline{
 			}
 		}
 
-		stage('Check Docker') {
-			steps {
-				sh 'docker info'
-				sh 'java hello.java'
-			}
-		}
+		// stage('Check Docker') {
+		// 	steps {
+		// 		sh 'docker info'
+		// 		sh 'java hello.java'
+		// 	}
+		// }
 
 		stage('Login') {
 
