@@ -1,16 +1,18 @@
-# Use an official Java runtime as a parent image
+# Use an official OpenJDK runtime as a parent image
 FROM openjdk:8-jdk-alpine
 
-RUN apk update && apk add --no-cache git
-
+# Set the working directory to /app
 WORKDIR /app
 
-RUN git clone https://github.com/dinhcam89/demo_jenkins2.git
+# Clone the Git repository that contains the Java file
+RUN apk update && apk add --no-cache git \
+    && git clone https://github.com/dinhcam89/demo_jenkins2.git
 
+# Set the working directory to the directory that contains the Java file
 WORKDIR /app/demo_jenkins
 
-RUN ./gradlew build
+# Compile the Java file
+RUN javac hello.java
 
-EXPOSE 5050
-
-CMD ["java", "-jar", "./build/libs/your-app-name.jar"]
+# Set the default command to run the compiled Java class
+CMD ["java", "hello"]
