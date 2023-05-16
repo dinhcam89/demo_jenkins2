@@ -18,14 +18,13 @@ pipeline{
 		stage('Check Docker') {
 			steps {
 				sh 'docker info'
-				sh 'java hello.java'
 			}
 		}
 
 		stage('Login') {
 
 			steps {	
-				sh 'echo $DOCKERHB_CREDENTIALS_PSW | echo $DOCKERHB_CREDENTIALS_USR | docker login -u echo $DOCKERHB_CREDENTIALS_USR -p $DOCKERHB_CREDENTIALS_PSW'	
+				sh 'echo $DOCKERHB_CREDENTIALS_PSW | echo $DOCKERHB_CREDENTIALS_USR | docker login -u $DOCKERHB_CREDENTIALS_USR -p $DOCKERHB_CREDENTIALS_PSW'	
 				}
 		}
 		
