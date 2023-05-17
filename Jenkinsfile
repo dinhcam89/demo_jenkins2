@@ -29,12 +29,12 @@ pipeline{
 		}
 		
 		
-		// stage('View Images') {
+		stage('View Images') {
 
-		// 	steps {
-		// 		sh 'docker images'
-		// 	}
-		// }
+			steps {
+				sh 'docker images'
+			}
+		}
 		
 		stage('Docker Tag') {
 
