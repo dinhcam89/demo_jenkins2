@@ -5,7 +5,8 @@ FROM openjdk:8-jdk-alpine
 WORKDIR /app
 
 # Clone the Git repository that contains the Java file
-RUN git clone https://github.com/dinhcam89/demo_jenkins2.git
+RUN apk update && apk add --no-cache git \
+    && git clone https://github.com/dinhcam89/demo_jenkins2.git
 
 # Set the working directory to the directory that contains the Java file
 WORKDIR /app/demo_jenkins2
