@@ -20,6 +20,7 @@ pipeline{
 				sh 'docker info'
 			}
 		}
+		//comment
 
 		stage('Login') {
 
